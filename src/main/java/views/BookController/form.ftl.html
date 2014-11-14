@@ -1,0 +1,44 @@
+<#import "../layout/defaultLayout.ftl.html" as layout>
+<@layout.myLayout "Book List">
+
+<div class="container">
+
+    <ul>
+        <#list errors! as error>
+            <li>${error.field} ${error.constraintViolation.messageKey}</li>
+        </#list>
+    </ul>
+
+    <div class="row">
+        <div class="col-lg-8">
+
+            <form action="/book/new" method="post" class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="title" class="col-lg-2 control-label">タイトル</label>
+                    <div class="col-lg-10">
+                        <input type="text" name="title" id="title" value="${(dto.title!"")}" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="title" class="col-lg-2 control-label">著者</label>
+                    <div class="col-lg-10">
+                        <input type="text" name="author" id="author" value="${(dto.author!"")}" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="title" class="col-lg-2 control-label">価格</label>
+                    <div class="col-lg-10">
+                        <input type="number" name="price" id="price" value="${(dto.price!"")}" class="form-control"/>
+                    </div>
+                </div>
+
+                <input type="submit" value="登録" class="btn btn-success pull-right" />
+            </form>
+
+        </div>
+
+    </div>
+</div>
+</@layout.myLayout>

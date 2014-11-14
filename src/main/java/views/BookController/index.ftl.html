@@ -1,0 +1,29 @@
+<#import "../layout/defaultLayout.ftl.html" as layout>
+<@layout.myLayout "Book List">
+
+<#if (flash.success)??>
+    <div class="alert alert-success">
+        ${flash.success}
+    </div>
+</#if>
+
+<a href="/book/new" class="btn btn-primary">新規追加</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>タイトル</th>
+            <th>著者</th>
+            <th>価格</th>
+        </tr>
+    </thead>
+    <#list books as book>
+    <tr>
+        <td>${book.title}</td>
+        <td>${book.author}</td>
+        <td>${book.price!""}</td>
+    </tr>
+    </#list>
+</table>
+
+</@layout.myLayout>
